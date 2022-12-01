@@ -1,0 +1,11 @@
+# write a github action to test your bash script
+# https://docs.github.com/en/actions/reference/workflow-syntax-for-github-actions
+name: Test Bash Script
+on: [push]
+jobs:
+  runscript:
+    name: Example
+    runs-on: debian-latest
+    steps:
+      - name: Call a Bash Script
+        run:  bash run_install.sh
