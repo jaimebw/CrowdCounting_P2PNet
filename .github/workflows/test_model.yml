@@ -1,0 +1,26 @@
+# write a github action to test your bash script
+# https://docs.github.com/en/actions/reference/workflow-syntax-for-github-actions
+name: Test Running Scripts
+on: [push]
+jobs:
+  runscript:
+    name: Example
+    runs-on: ubuntu-latest 
+    steps:
+      - uses: actions/checkout@v2
+      - name: Setup Python
+        uses: actions/setup-python@v2
+        with:
+          python-version: "3.x"
+      - name: Install dependencies
+        run: |
+          pip install -r requirements.txt
+      - name: Run run_test
+        run: |
+          mkdir logs
+          python run_test.py
+
+
+    
+
+        
