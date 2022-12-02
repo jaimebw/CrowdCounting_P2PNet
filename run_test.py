@@ -35,6 +35,7 @@ def get_args_parser():
                         help='path where the trained weights saved')
 
     parser.add_argument('--gpu_id', default=0, type=int, help='the gpu used for evaluation')
+    parser.add_argument('--cpu',default=True, type=bool, help='use cpu or not')
 
     return parser
 
@@ -43,14 +44,17 @@ def main(args, debug=False):
     os.environ["CUDA_VISIBLE_DEVICES"] = '{}'.format(args.gpu_id)
 
     print(args)
-    device = torch.device('cuda')
+    if args.cpu:
+        device = torch.device('cpu')
+    else:
+        device = torch.device('cuda')
     # get the P2PNet
     model = build_model(args)
     # move to GPU
     model.to(device)
     # load trained model
     if args.weight_path is not None:
-        checkpoint = torch.load(args.weight_path, map_location='cpu')
+        checkpoint = torch.load(args.weight_path, map_location=device)
         model.load_state_dict(checkpoint['model'])
     # convert to eval mode
     model.eval()

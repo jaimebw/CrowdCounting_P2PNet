@@ -12,9 +12,5 @@ rm -rf ~/miniconda3/miniconda.sh
 echo "Creating Python virtualenv..."
 conda create -n test python=3.9
 conda activate test
-echo "Downloading VGG16_bn files..."
-mkdir backbone_model
-curl -o vgg16_bn-6c64b313.pth https://download.pytorch.org/models/vgg16_bn-6c64b313.pth
-mv vgg16_bn-6c64b313.pth backbone_model/
 echo "Installing Python dependencies..."
 pip install -r requirements.txt
