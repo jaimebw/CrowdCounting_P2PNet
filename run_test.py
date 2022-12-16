@@ -66,7 +66,7 @@ def main(args, debug=False):
 
     # set your image path here
     #img_path = "./pred_imgs/0218.jpg"
-    img_path = "/Users/jaime/Downloads/RHC/img/train/20180226_0.0.jpg"
+    img_path = "/Users/jaime/Downloads/RHC/img/train/20180226_2_9925.3.jpg"
     # load the images
     img_raw = Image.open(img_path).convert('RGB')
     # round the size
